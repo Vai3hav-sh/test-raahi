@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raahi Corporate - Effortless Business Travel Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #1e3a5f;
+            --secondary-blue: #5e9fd6;
+            --accent-orange: #e65100;
+            --accent-coral: #ff8a65;
+            --light-gray: #f8f9fa;
+            --success-green: #28a745;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: var(--primary-navy) !important;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="white" opacity="0.1"><path d="M0,0v46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1000,0,1000,0Z"></path></svg>') repeat-x;
+            background-size: 1000px 100px;
+            animation: wave 20s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(-1000px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .typing-animation {
+            border-right: 3px solid var(--accent-orange);
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-orange) }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .section-title {
+            color: var(--primary-navy);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            height: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: none;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .feature-card.animate {
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 2px solid var(--accent-orange);
+        }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .icon-orange { background-color: rgba(230, 81, 0, 0.1); color: var(--accent-orange); }
+        .icon-blue { background-color: rgba(94, 159, 214, 0.1); color: var(--secondary-blue); }
+        .icon-green { background-color: rgba(40, 167, 69, 0.1); color: var(--success-green); }
+        .icon-purple { background-color: rgba(123, 104, 238, 0.1); color: #7B68EE; }
+        .icon-red { background-color: rgba(220, 53, 69, 0.1); color: #dc3545; }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-coral));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 81, 0, 0.3);
+        }
+        
+        .step-number:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(230, 81, 0, 0.4);
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(45deg, var(--accent-orange), var(--accent-coral));
+            border: none;
+            padding: 18px 45px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(230, 81, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary-custom:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(230, 81, 0, 0.4);
+            background: linear-gradient(45deg, var(--accent-coral), var(--accent-orange));
+        }
+        
+        .btn-outline-custom {
+            border: 2px solid var(--primary-navy);
+            color: var(--primary-navy);
+            padding: 15px 35px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-custom:hover {
+            background: var(--primary-navy);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(30, 58, 95, 0.3);
+        }
+        
+        .stats-section {
+            background: var(--light-gray);
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-preview {
+            border-radius: 25px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.25);
+            overflow: hidden;
+            background: white;
+            padding: 2.5rem;
+            position: relative;
+        }
+        
+        .dashboard-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(94, 159, 214, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+        
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(40, 167, 69, 0.15);
+            color: var(--success-green);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 8px;
+            border: 2px solid rgba(40, 167, 69, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .trust-badge:hover {
+            background: rgba(40, 167, 69, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin: 0 15px;
+            color: var(--primary-navy) !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-coral));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .accordion-button {
+            background: white;
+            border: none;
+            padding: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: var(--accent-orange);
+            color: white;
+        }
+        
+        .accordion-body {
+            padding: 1.5rem;
+            background: var(--light-gray);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0 60px;
+                min-height: auto;
+            }
+            .feature-card {
+                margin-bottom: 2rem;
+            }
+            .parallax {
+                background-attachment: scroll;
+            }
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-coral));
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 9999;
+        }
+        
+        .loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--accent-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-route me-2"></i>RAAHI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#why-raahi">WHY RAAHI ?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Success Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-custom ms-3" href="#signup">SIGN UP</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-2 fw-bold mb-4 animate__animated animate__fadeInLeft">
+                            <i class="fas fa-briefcase me-3"></i>RAAHI CORPORATE
+                        </h1>
+                        <h2 class="h2 mb-4 animate__animated animate__fadeInLeft animate__delay-1s">
+                            <span class="typing-animation">Effortless corporate travel</span>
+                        </h2>
+                        <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-2s">
+                            <i class="fas fa-check-circle me-2 text-warning"></i>Vetted stays, flat pricing, Zero hassle
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 animate__animated animate__fadeInUp animate__delay-3s">
+                            <a href="#signup" class="btn btn-primary-custom btn-lg pulse">
+                                <i class="fas fa-rocket me-2"></i>GET STARTED
+                            </a>
+                            <a href="#demo" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-play me-2"></i>Watch Demo
+                            </a>
+                        </div>
+                        <div class="mt-5 animate__animated animate__fadeInUp animate__delay-4s">
+                            <span class="trust-badge">
+                                <i class="fas fa-shield-alt me-2"></i>Trusted by 500+ Companies
+                            </span>
+                            <span class="trust-badge">
+                                <i class="fas fa-star me-2"></i>4.8/5 Rating
+                            </span>
+                            <span class="trust-badge">
+                                <i class="fas fa-award me-2"></i>ISO 27001 Certified
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center animate__animated animate__fadeInRight animate__delay-2s">
+                        <div class="dashboard-preview floating">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-circle text-danger me-2"></i>
+                                <i class="fas fa-circle text-warning me-2"></i>
+                                <i class="fas fa-circle text-success me-2"></i>
+                                <span class="ms-auto text-muted small">Raahi Dashboard</span>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="p-3 rounded" style="background: var(--accent-orange); color: white;">
+                                        <i class="fas fa-chart-line fa-2x mb-2"></i>
+                                        <h4>₹2.4L</h4>
+                                        <small>Total Savings</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3 rounded" style="background: var(--secondary-blue); color: white;">
+                                        <i class="fas fa-calendar-check fa-2x mb-2"></i>
+                                        <h4>127</h4>
+                                        <small>Active Bookings</small>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="p-3 rounded bg-light">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span><i class="fas fa-map-marker-alt text-primary me-2"></i>Recent Bookings</span>
+                                            <span class="badge bg-success">Live</span>
+                                        </div>
+                                        <div class="progress mb-2" style="height: 8px;">
+                                            <div class="progress-bar bg-warning" style="width: 75%"></div>
+                                        </div>
+                                        <small class="text-muted">Mumbai → Bangalore (15 travelers)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-6">
+                    <div class="stat-item fade-in">
+                        <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                        <span class="stat-number" data-target="500">0</span>
+                        <span class="text-muted">Companies Trust Us</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6">
+                    <div class="stat-item fade-in">
+                        <i class="fas fa-percentage fa-3x text-success mb-3"></i>
+                        <span class="stat-number" data-target="30">0</span>
+                        <span class="text-muted">Average Savings</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6">
+                    <div class="stat-item fade-in">
+                        <i class="fas fa-clock fa-3x text-warning mb-3"></i>
+                        <span class="stat-number">24/7</span>
+                        <span class="text-muted">Support Available</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-6">
+                    <div class="stat-item fade-in">
+                        <i class="fas fa-calendar-alt fa-3x text-info mb-3"></i>
+                        <span class="stat-number" data-target="50000">0</span>
+                        <span class="text-muted">Bookings Monthly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Raahi Section -->
+    <section id="why-raahi" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="section-title display-3">WHY RAAHI ?</h2>
+                <p class="lead text-muted">Built for modern businesses that value efficiency, transparency, and control</p>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-8">
+                        <p class="text-muted">Join the revolution in corporate travel management. Experience the difference with our comprehensive platform that puts your business needs first, eliminates hidden costs, and ensures every trip is productive and comfortable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-blue mx-auto">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h5 class="fw-bold">Standardized Hotels Only</h5>
+                        <p class="text-muted">Curated, quality-assured accommodations that meet corporate standards. Every property is personally verified by our team.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Business centers</li>
+                            <li><i class="fas fa-check text-success me-2"></i>High-speed WiFi</li>
+                            <li><i class="fas fa-check text-success me-2"></i>24/7 room service</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-orange mx-auto">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h5 class="fw-bold">Unified Pricing</h5>
+                        <p class="text-muted">No surge, flat 365 days. Transparent pricing you can budget for with confidence.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>No hidden fees</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Volume discounts</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Annual rate locks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-green mx-auto">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h5 class="fw-bold">Zero Billing Hassle</h5>
+                        <p class="text-muted">Automated invoicing with GST compliance built in. Perfect for Indian businesses.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Auto GST calculation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Monthly consolidation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>ERP integration</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-purple mx-auto">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h5 class="fw-bold">Admin Dashboard</h5>
+                        <p class="text-muted">Personalized dashboard with real-time insights and complete travel controls.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Live tracking</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Policy enforcement</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Custom reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 mt-2">
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-green mx-auto">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <h5 class="fw-bold">Assured GST Invoice</h5>
+                        <p class="text-muted">Compliant documentation for seamless accounting and audit requirements.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>18% GST included</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Digital receipts</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Audit trail</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-orange mx-auto">
+                            <i class="fas fa-user-headset"></i>
+                        </div>
+                        <h5 class="fw-bold">Dedicated Travel Manager</h5>
+                        <p class="text-muted">Personal support for complex travel requirements with industry expertise.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Personal relationship manager</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Emergency assistance</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Custom solutions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-blue mx-auto">
+                            <i class="fas fa-ban"></i>
+                        </div>
+                        <h5 class="fw-bold">Zero Cancellation Fees</h5>
+                        <p class="text-muted">Flexible policies that adapt to business needs without penalty charges.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Free cancellation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Date modifications</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Instant refunds</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon icon-red mx-auto">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h5 class="fw-bold">Lowest Price Guarantee</h5>
+                        <p class="text-muted">We'll match any lower rate you find elsewhere, guaranteed in writing.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>Price match promise</li>
+                            <li><i class="fas fa-check text-success me-2"></i>110% guarantee</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Instant verification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories/Testimonials -->
+    <section id="testimonials" class="py-5 parallax" style="background-image: linear-gradient(rgba(30, 58, 95, 0.8), rgba(94, 159, 214, 0.8)), url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 1000 600&quot; fill=&quot;%23f8f9fa&quot;><circle cx=&quot;200&quot; cy=&quot;200&quot; r=&quot;3&quot; opacity=&quot;0.3&quot;/><circle cx=&quot;600&quot; cy=&quot;400&quot; r=&quot;2&quot; opacity=&quot;0.4&quot;/><circle cx=&quot;800&quot; cy=&quot;100&quot; r=&quot;4&quot; opacity=&quot;0.2&quot;/></svg>'); color: white;">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="display-4 fw-bold">Success Stories</h2>
+                <p class="lead">See how leading companies are transforming their travel programs with Raahi</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 fade-in">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar me-3">RS</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Rajesh Sharma</h6>
+                                <small class="text-muted">CFO, TechCorp India</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="text-muted">"Raahi helped us cut our travel costs by 35% while improving employee satisfaction. The transparent pricing and automated compliance features are game-changers for our finance team."</p>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-primary"><i class="fas fa-building me-1"></i>2000+ Employees</small>
+                            <small class="text-success"><i class="fas fa-chart-line me-1"></i>35% Savings</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-in">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar me-3">PK</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Priya Krishnan</h6>
+                                <small class="text-muted">VP Operations, GlobalTech</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="text-muted">"The dedicated travel manager and 24/7 support have been incredible. Our employees love the hassle-free booking experience, and we love the detailed reporting and analytics."</p>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-primary"><i class="fas fa-building me-1"></i>500+ Employees</small>
+                            <small class="text-success"><i class="fas fa-clock me-1"></i>80% Time Saved</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-in">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="testimonial-avatar me-3">AM</div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Arjun Mehta</h6>
+                                <small class="text-muted">Travel Manager, StartupHub</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="text-muted">"From a startup to scaling up, Raahi has grown with us. The policy customization and approval workflows have made travel management so much easier as we've expanded."</p>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-primary"><i class="fas fa-building me-1"></i>150+ Employees</small>
+                            <small class="text-success"><i class="fas fa-users me-1"></i>95% Employee NPS</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#case-studies" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-file-alt me-2"></i>View Detailed Case Studies
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Made for Employees Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h2 class="section-title display-5">Made for Employees.<br>Trusted by Corporates</h2>
+                    <p class="lead text-muted mb-4">A travel platform designed with both employee experience and corporate control in mind.</p>
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-blue me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Uniform Experience Across Cities</h5>
+                                    <p class="text-muted">Standardized, quality stays no matter where work takes you. Same service standards from Mumbai to Chennai, Bangalore to Delhi.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Consistent room quality</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Standardized amenities</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Same booking process</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-green me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-shield-check"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Safe & Verified Hotels Only</h5>
+                                    <p class="text-muted">Handpicked properties that ensure comfort and security. Every hotel undergoes our 47-point safety audit.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Safety certifications</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Female traveler safe zones</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>24/7 security presence</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-orange me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-stopwatch"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Hassle-Free Check-ins & Billing</h5>
+                                    <p class="text-muted">No last-minute surprises, everything pre-approved. Express check-in and automated expense reporting.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Mobile check-in</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Contactless experience</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Auto expense capture</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-purple me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Work-Ready Amenities</h5>
+                                    <p class="text-muted">Reliable Wi-Fi, seamless support, and comfort designed for business travelers who need to stay productive.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>High-speed internet (100+ Mbps)</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Ergonomic workspaces</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Video conferencing facilities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="text-center">
+                        <div class="dashboard-preview">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-mobile-alt text-primary me-2"></i>
+                                <span class="fw-bold">Employee Mobile App</span>
+                                <span class="ms-auto badge bg-success">New</span>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-6">
+                                    <div class="p-3 rounded bg-primary text-white text-center">
+                                        <i class="fas fa-search fa-2x mb-2"></i>
+                                        <h6>Smart Search</h6>
+                                        <small>AI-powered recommendations</small>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="p-3 rounded bg-success text-white text-center">
+                                        <i class="fas fa-calendar fa-2x mb-2"></i>
+                                        <h6>Quick Booking</h6>
+                                        <small>3-tap booking process</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-3 rounded bg-light mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span><i class="fas fa-bell text-warning me-2"></i>Travel Updates</span>
+                                    <span class="badge bg-warning">3</span>
+                                </div>
+                                <small class="text-muted d-block">✈️ Flight delayed by 30 mins</small>
+                                <small class="text-muted d-block">🏨 Check-in ready at Hotel Taj</small>
+                                <small class="text-muted d-block">🚗 Cab assigned: KA01AB1234</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fas fa-phone me-1"></i>Support
+                                </button>
+                                <button class="btn btn-outline-success btn-sm flex-fill">
+                                    <i class="fas fa-receipt me-1"></i>Expenses
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="section-title display-4">Get started in 3 steps</h2>
+                <p class="lead text-muted">Simple setup process to get your team traveling smarter</p>
+                <p class="text-muted">Our proven onboarding process ensures you're up and running in less than 24 hours</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 fade-in">
+                    <div class="text-center">
+                        <div class="step-number">1</div>
+                        <h4 class="fw-bold">Create your Account</h4>
+                        <p class="text-muted mb-4">Quick registration with company details. Get verified in minutes, not days. Our smart verification process uses your company's existing digital footprint.</p>
+                        <div class="bg-light p-3 rounded">
+                            <ul class="list-unstyled text-start mb-0">
+                                <li><i class="fas fa-check text-success me-2"></i>Company registration (5 mins)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Document verification</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Account activation</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Welcome call scheduling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-in">
+                    <div class="text-center">
+                        <div class="step-number">2</div>
+                        <h4 class="fw-bold">Configure Travel Policies</h4>
+                        <p class="text-muted mb-4">Set up employee-friendly policy guidelines, approval workflows, and spending limits tailored to your business needs and hierarchy.</p>
+                        <div class="bg-light p-3 rounded">
+                            <ul class="list-unstyled text-start mb-0">
+                                <li><i class="fas fa-check text-success me-2"></i>Budget limits per grade</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Approval matrix setup</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Preferred hotel categories</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Policy exception rules</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-in">
+                    <div class="text-center">
+                        <div class="step-number">3</div>
+                        <h4 class="fw-bold">Launch & Track</h4>
+                        <p class="text-muted mb-4">Invite your employees and start booking. Monitor usage, track savings, and optimize your travel program with real-time analytics.</p>
+                        <div class="bg-light p-3 rounded">
+                            <ul class="list-unstyled text-start mb-0">
+                                <li><i class="fas fa-check text-success me-2"></i>Employee invitations</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Training & support</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Real-time monitoring</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Performance optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <p class="text-muted mb-3">Average setup time: <strong>Less than 24 hours</strong></p>
+                <a href="#signup" class="btn btn-primary-custom btn-lg">
+                    <i class="fas fa-rocket me-2"></i>Start Your Setup Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="section-title display-4">Transparent Pricing</h2>
+                <p class="lead text-muted">No hidden fees, no surprises. Choose the plan that works for your business.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 fade-in">
+                    <div class="feature-card text-center h-100">
+                        <div class="feature-icon icon-blue mx-auto">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4 class="fw-bold">Starter</h4>
+                        <div class="display-6 text-primary fw-bold mb-3">Free</div>
+                        <p class="text-muted mb-4">Perfect for small teams getting started</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i class="fas fa-check text-success me-2"></i>Up to 25 bookings/month</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Basic dashboard</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Email support</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Standard hotels</li>
+                        </ul>
+                        <a href="#signup" class="btn btn-outline-primary">Get Started Free</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-in">
+                    <div class="feature-card text-center h-100 position-relative">
+                        <div class="badge bg-warning position-absolute top-0 start-50 translate-middle px-3 py-2">Most Popular</div>
+                        <div class="feature-icon icon-orange mx-auto">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4 class="fw-bold">Business</h4>
+                        <div class="display-6 text-primary fw-bold mb-3">₹99<small class="fs-6">/booking</small></div>
+                        <p class="text-muted mb-4">Ideal for growing companies</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i class="fas fa-check text-success me-2"></i>Unlimited bookings</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Advanced analytics</li>
+                            <li><i class="fas fa-check text-success me-2"></i>24/7 phone support</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Premium hotels</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Custom policies</li>
+                            <li><i class="fas fa-check text-success me-2"></i>API access</li>
+                        </ul>
+                        <a href="#signup" class="btn btn-primary-custom">Start Free Trial</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 fade-in">
+                    <div class="feature-card text-center h-100">
+                        <div class="feature-icon icon-green mx-auto">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h4 class="fw-bold">Enterprise</h4>
+                        <div class="display-6 text-primary fw-bold mb-3">Custom</div>
+                        <p class="text-muted mb-4">For large organizations with complex needs</p>
+                        <ul class="list-unstyled mb-4">
+                            <li><i class="fas fa-check text-success me-2"></i>Volume discounts</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Dedicated account manager</li>
+                            <li><i class="fas fa-check text-success me-2"></i>White-label solution</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Custom integrations</li>
+                            <li><i class="fas fa-check text-success me-2"></i>SLA guarantees</li>
+                            <li><i class="fas fa-check text-success me-2"></i>On-premise deployment</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-success">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <p class="text-muted">All plans include: GST compliance, zero cancellation fees, and our lowest price guarantee</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="section-title display-4">Frequently Asked Questions</h2>
+                <p class="lead text-muted">Everything you need to know about Raahi Corporate</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="fas fa-question-circle me-3"></i>How does Raahi's pricing compare to other platforms?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Our transparent pricing model typically saves companies 20-35% on their travel costs. Unlike other platforms that have hidden fees, surge pricing, or mark-ups, we offer flat rates year-round. Plus, our lowest price guarantee ensures you're always getting the best deal.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="fas fa-shield-alt me-3"></i>How do you ensure hotel quality and safety?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Every hotel in our network undergoes a comprehensive 47-point quality and safety audit. We personally visit each property, verify safety certifications, check cleanliness standards, test Wi-Fi speeds, and ensure business amenities are available. We also maintain a continuous feedback loop with travelers and regularly re-audit our properties.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="fas fa-file-invoice me-3"></i>How does GST compliance work?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>All our invoices are GST compliant with proper HSN codes and tax breakdowns. We automatically calculate 18% GST on accommodation and provide detailed invoices that are accepted by all accounting systems. Our invoices meet all audit requirements and can be directly integrated with your ERP systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="fas fa-clock me-3"></i>What kind of support do you provide?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>We provide 24/7 support through multiple channels - phone, email, chat, and WhatsApp. Business plan customers get a dedicated relationship manager who knows your company's preferences and policies. For enterprise clients, we provide on-site support and custom SLA agreements.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    <i class="fas fa-cogs me-3"></i>Can Raahi integrate with our existing systems?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Yes! We offer API integration with popular ERP systems like SAP, Oracle, and Tally. We can also integrate with expense management tools like Concur, Expensify, and Zoho Expense. Custom integrations are available for enterprise customers with our technical team's support.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    <i class="fas fa-ban me-3"></i>What's your cancellation policy?
+                                </button>
+                            </h3>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>We offer zero cancellation fees for all bookings made through Raahi. You can cancel or modify bookings up to 2 hours before check-in without any charges. For emergency cancellations, our 24/7 support team will assist you with instant refund processing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h2 class="section-title display-5">Powerful Dashboard.<br>Complete Control.</h2>
+                    <p class="lead text-muted mb-4">Monitor spending, track bookings, and manage policies from one intuitive interface designed for business leaders.</p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-chart-line text-primary fa-2x me-3"></i>
+                                <div>
+                                    <h6 class="mb-0">Real-time Analytics</h6>
+                                    <small class="text-muted">Live expense tracking</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-shield-check text-success fa-2x me-3"></i>
+                                <div>
+                                    <h6 class="mb-0">Policy Compliance</h6>
+                                    <small class="text-muted">Automated enforcement</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-file-export text-warning fa-2x me-3"></i>
+                                <div>
+                                    <h6 class="mb-0">Custom Reports</h6>
+                                    <small class="text-muted">Executive summaries</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-users text-info fa-2x me-3"></i>
+                                <div>
+                                    <h6 class="mb-0">Team Overview</h6>
+                                    <small class="text-muted">Travel activity monitoring</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a href="#demo" class="btn btn-primary-custom">
+                            <i class="fas fa-play me-2"></i>View Live Demo
+                        </a>
+                        <a href="#signup" class="btn btn-outline-primary">
+                            <i class="fas fa-rocket me-2"></i>Start Free Trial
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="dashboard-preview">
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="fas fa-tachometer-alt text-primary me-2"></i>
+                            <span class="fw-bold">Raahi Corporate Dashboard</span>
+                            <span class="ms-auto badge bg-success">Live</span>
+                        </div>
+                        
+                        <div class="row g-3 mb-4">
+                            <div class="col-6">
+                                <div class="p-3 rounded text-white text-center" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-coral));">
+                                    <i class="fas fa-rupee-sign fa-2x mb-2"></i>
+                                    <h3 class="mb-1">₹2.4L</h3>
+                                    <small>Total Savings This Quarter</small>
+                                    <div class="mt-2">
+                                        <small class="badge bg-success"><i class="fas fa-arrow-up me-1"></i>35% vs last quarter</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3 rounded text-white text-center" style="background: linear-gradient(135deg, var(--secondary-blue), var(--primary-navy));">
+                                    <i class="fas fa-calendar-check fa-2x mb-2"></i>
+                                    <h3 class="mb-1">127</h3>
+                                    <small>Active Bookings</small>
+                                    <div class="mt-2">
+                                        <small class="badge bg-warning"><i class="fas fa-clock me-1"></i>15 pending approval</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-light p-3 rounded mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="fw-bold"><i class="fas fa-chart-bar text-primary me-2"></i>Travel Trends</span>
+                                <select class="form-select form-select-sm" style="width: auto;">
+                                    <option>This Month</option>
+                                    <option>This Quarter</option>
+                                    <option>This Year</option>
+                                </select>
+                            </div>
+                            <div class="row g-2 text-center">
+                                <div class="col-4">
+                                    <div class="border rounded p-2">
+                                        <i class="fas fa-map-marker-alt text-danger"></i>
+                                        <div class="small fw-bold">Mumbai</div>
+                                        <div class="small text-muted">45 trips</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="border rounded p-2">
+                                        <i class="fas fa-map-marker-alt text-success"></i>
+                                        <div class="small fw-bold">Bangalore</div>
+                                        <div class="small text-muted">32 trips</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="border rounded p-2">
+                                        <i class="fas fa-map-marker-alt text-warning"></i>
+                                        <div class="small fw-bold">Delhi</div>
+                                        <div class="small text-muted">28 trips</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-light p-3 rounded">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="fw-bold"><i class="fas fa-bell text-warning me-2"></i>Recent Activity</span>
+                                <span class="badge bg-primary">3 New</span>
+                            </div>
+                            <div class="small">
+                                <div class="d-flex justify-content-between py-1">
+                                    <span>Rajesh booked Taj Hotel, Mumbai</span>
+                                    <span class="text-muted">2m ago</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-1">
+                                    <span>Policy updated: Max ₹8K/night</span>
+                                    <span class="text-muted">1h ago</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-1">
+                                    <span>Q3 report generated</span>
+                                    <span class="text-muted">3h ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Savings Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2 class="section-title display-3">Save upto 30% on your travel expenses</h2>
+                <p class="lead text-muted mb-5">Join hundreds of companies already optimizing their travel costs with Raahi</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-5">
+                                <div class="row text-center mb-4">
+                                    <div class="col-md-3 mb-4">
+                                        <div class="feature-icon icon-blue mx-auto mb-3">
+                                            <i class="fas fa-percentage"></i>
+                                        </div>
+                                        <h3 class="text-primary display-6 fw-bold">30%</h3>
+                                        <p class="text-muted">Average Cost Reduction</p>
+                                        <small class="text-muted">Compared to traditional booking methods</small>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <div class="feature-icon icon-green mx-auto mb-3">
+                                            <i class="fas fa-stopwatch"></i>
+                                        </div>
+                                        <h3 class="text-success display-6 fw-bold">85%</h3>
+                                        <p class="text-muted">Time Saved on Bookings</p>
+                                        <small class="text-muted">3-minute average booking time</small>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <div class="feature-icon icon-orange mx-auto mb-3">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <h3 class="text-warning display-6 fw-bold">100%</h3>
+                                        <p class="text-muted">Policy Compliance</p>
+                                        <small class="text-muted">Automated policy enforcement</small>
+                                    </div>
+                                    <div class="col-md-3 mb-4">
+                                        <div class="feature-icon icon-purple mx-auto mb-3">
+                                            <i class="fas fa-smile"></i>
+                                        </div>
+                                        <h3 class="text-info display-6 fw-bold">95%</h3>
+                                        <p class="text-muted">Employee Satisfaction</p>
+                                        <small class="text-muted">Based on post-trip surveys</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-light p-4 rounded mb-4">
+                                    <h5 class="text-center fw-bold mb-3">Calculate Your Potential Savings</h5>
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Monthly Travel Budget</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">₹</span>
+                                                <input type="number" class="form-control" id="monthlyBudget" placeholder="100000" value="100000">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Number of Trips/Month</label>
+                                            <input type="number" class="form-control" id="monthlyTrips" placeholder="50" value="50">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">Potential Annual Savings</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">₹</span>
+                                                <input type="text" class="form-control fw-bold text-success" id="annualSavings" readonly value="3,60,000">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <a href="#signup" class="btn btn-primary-custom btn-lg me-3">
+                                        <i class="fas fa-calculator me-2"></i>Start Saving Today
+                                    </a>
+                                    <a href="#contact" class="btn btn-outline-primary btn-lg">
+                                        <i class="fas fa-phone me-2"></i>Speak with Expert
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="signup" class="py-5" style="background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%); color: white;">
+        <div class="container text-center fade-in">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="display-4 fw-bold mb-4">Ready to transform your corporate travel?</h2>
+                    <p class="lead mb-5">Join 500+ companies already using Raahi for smarter business travel. Start your free trial today and see the difference.</p>
+                    
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-lg-8">
+                            <form class="d-flex flex-column flex-sm-row gap-3" id="signupForm">
+                                <div class="flex-grow-1">
+                                    <input type="email" class="form-control form-control-lg" placeholder="Enter your work email" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom btn-lg">
+                                    <i class="fas fa-rocket me-2"></i>GET STARTED
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="row text-center">
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-credit-card fa-2x mb-2 opacity-75"></i>
+                            <div class="small opacity-75">No credit card required</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-calendar-alt fa-2x mb-2 opacity-75"></i>
+                            <div class="small opacity-75">Free 30-day trial</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <i class="fas fa-clock fa-2x mb-2 opacity-75"></i>
+                            <div class="small opacity-75">Setup in 5 minutes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <p class="small opacity-75 mb-2">Trusted by leading companies:</p>
+                        <div class="d-flex justify-content-center flex-wrap gap-4">
+                            <span class="badge bg-light text-dark px-3 py-2">TechCorp India</span>
+                            <span class="badge bg-light text-dark px-3 py-2">GlobalTech</span>
+                            <span class="badge bg-light text-dark px-3 py-2">StartupHub</span>
+                            <span class="badge bg-light text-dark px-3 py-2">InnovateNow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-route me-2"></i>RAAHI CORPORATE</h5>
+                    <p class="text-muted">Making corporate travel effortless with vetted stays, transparent pricing, and zero hassle. Transform your business travel experience today.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-muted fs-4"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-muted fs-4"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-muted fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-muted fs-4"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Product</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Dashboard</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Mobile App</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Support</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>API Docs</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Status</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Security</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>System Health</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Terms of Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Cookie Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>GDPR</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Licenses</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="text-muted mb-0">
+                        <i class="fas fa-copyright me-2"></i>2025 Raahi Corporate. All rights reserved. 
+                        <span class="ms-3"><i class="fas fa-phone me-1"></i>+91-9876543210</span>
+                        <span class="ms-3"><i class="fas fa-envelope me-1"></i>hello@raahi.co</span>
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex justify-content-md-end align-items-center gap-3">
+                        <span class="badge bg-success"><i class="fas fa-shield-alt me-1"></i>ISO 27001</span>
+                        <span class="badge bg-primary"><i class="fas fa-award me-1"></i>Best Travel Platform 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Scroll progress indicator
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollIndicator').style.transform = `scaleX(${scrollPercent / 100})`;
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.backgroundColor = '#ffffff';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animated counter for statistics
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('[data-target]');
+                    statNumbers.forEach(statNumber => {
+                        const target = parseInt(statNumber.dataset.target);
+                        let current = 0;
+                        const increment = target / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                statNumber.textContent = target.toLocaleString();
+                                clearInterval(timer);
+                            } else {
+                                statNumber.textContent = Math.ceil(current).toLocaleString();
+                            }
+                        }, 50);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Fade in animation for elements
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            fadeInObserver.observe(el);
+        });
+
+        // Feature card animation
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // Savings calculator
+        function updateSavings() {
+            const monthlyBudget = parseInt(document.getElementById('monthlyBudget').value) || 0;
+            const monthlyTrips = parseInt(document.getElementById('monthlyTrips').value) || 0;
+            const annualSavings = Math.round((monthlyBudget * 12 * 0.3));
+            document.getElementById('annualSavings').value = annualSavings.toLocaleString();
+        }
+
+        document.getElementById('monthlyBudget').addEventListener('input', updateSavings);
+        document.getElementById('monthlyTrips').addEventListener('input', updateSavings);
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Simple email validation
+            if (email && email.includes('@')) {
+                // Show success message
+                const button = this.querySelector('button');
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check me-2"></i>Thank You!';
+                button.classList.add('btn-success');
+                button.classList.remove('btn-primary-custom');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('btn-success');
+                    button.classList.add('btn-primary-custom');
+                    this.querySelector('input[type="email"]').value = '';
+                }, 3000);
+            }
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Easter egg: Konami code for special animation
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                document.body.style.animation = 'none';
+                document.body.offsetHeight; // Trigger reflow
+                document.body.style.animation = 'rainbow 2s ease-in-out';
+            }
+        });
+
+        // Add rainbow animation keyframes
+        const rainbowKeyframes = `
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+            100% { filter: hue-rotate(360deg); }
+        }`;
+        
+        const style = document.createElement('style');
+        style.textContent = rainbowKeyframes;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
