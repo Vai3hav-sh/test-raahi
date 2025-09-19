@@ -20,7 +20,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #1a1a1a;
             overflow-x: hidden;
         }
         
@@ -32,7 +32,12 @@
         }
         
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-blue) 100%);
+            background-image: 
+                linear-gradient(135deg, rgba(30, 58, 95, 0.8) 0%, rgba(94, 159, 214, 0.7) 100%),
+                url('./backdrop/3.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
             color: white;
             padding: 120px 0 80px;
             position: relative;
@@ -90,7 +95,7 @@
         
         .section-title {
             color: var(--primary-navy);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 3rem;
             opacity: 0;
             animation: fadeInUp 1s ease-out forwards;
@@ -106,6 +111,21 @@
             transition: all 0.4s ease;
             opacity: 0;
             transform: translateY(30px);
+        }
+        
+        .feature-card h5 {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        
+        .feature-card p {
+            color: #2c2c2c;
+            font-weight: 500;
+        }
+        
+        .feature-card li {
+            color: #2c2c2c;
+            font-weight: 500;
         }
         
         .feature-card.animate {
@@ -272,15 +292,16 @@
         .trust-badge {
             display: inline-flex;
             align-items: center;
-            background: rgba(40, 167, 69, 0.15);
-            color: var(--success-green);
-            padding: 10px 20px;
+            background: rgba(40, 167, 69, 0.9);
+            color: white;
+            padding: 12px 24px;
             border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
             margin: 8px;
-            border: 2px solid rgba(40, 167, 69, 0.2);
+            border: 2px solid rgba(40, 167, 69, 0.3);
             transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         
         .trust-badge:hover {
@@ -347,12 +368,22 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
         
+        .testimonial-card p {
+            color: #2c2c2c;
+            font-weight: 500;
+        }
+        
         .accordion-button {
             background: white;
             border: none;
             padding: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary-navy);
+        }
+        
+        .accordion-body p {
+            color: #2c2c2c;
+            font-weight: 500;
         }
         
         .accordion-button:not(.collapsed) {
@@ -386,6 +417,7 @@
             .hero-section {
                 padding: 80px 0 60px;
                 min-height: auto;
+                background-attachment: scroll;
             }
             .feature-card {
                 margin-bottom: 2rem;
@@ -445,6 +477,113 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        .hover-link {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-link:hover {
+            opacity: 1 !important;
+            color: var(--accent-orange) !important;
+            transform: translateX(3px);
+        }
+        
+        .monitor-container {
+            position: sticky;
+            top: 100px;
+            z-index: 10;
+        }
+        
+        .monitor-frame {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 20px 20px 8px 8px;
+            padding: 20px;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            position: relative;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .monitor-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: #27ae60;
+            border-radius: 50%;
+            box-shadow: -12px 0 0 #e74c3c, 12px 0 0 #f39c12;
+        }
+        
+        .monitor-screen {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            margin: 8px 0 0 0;
+        }
+        
+        .monitor-screen .dashboard-preview {
+            margin: 0;
+            border-radius: 12px;
+            box-shadow: none;
+            padding: 1.8rem;
+            background: white;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .monitor-screen .dashboard-preview::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .monitor-screen .dashboard-preview::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .monitor-screen .dashboard-preview::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        .monitor-screen .dashboard-preview::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        .monitor-stand {
+            width: 120px;
+            height: 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            margin: 0 auto;
+            border-radius: 0 0 10px 10px;
+            position: relative;
+        }
+        
+        .monitor-stand::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 10px;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 991px) {
+            .monitor-container {
+                position: static;
+                top: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -481,7 +620,7 @@
                         <a class="nav-link" href="#pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-custom ms-3" href="#signup">SIGN UP</a>
+                        <a class="btn btn-outline-custom btn-sm ms-3 px-3 py-2" href="#signup">SIGN UP</a>
                     </li>
                 </ul>
             </div>
@@ -492,24 +631,22 @@
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <h1 class="display-2 fw-bold mb-4 animate__animated animate__fadeInLeft">
+                <div class="col-lg-6 offset-lg-6">
+                    <div class="hero-content text-end">
+                        <h1 class="display-2 fw-bold mb-4 animate__animated animate__fadeInRight">
                             <i class="fas fa-briefcase me-3"></i>RAAHI CORPORATE
                         </h1>
-                        <h2 class="h2 mb-4 animate__animated animate__fadeInLeft animate__delay-1s">
-                            <span class="typing-animation">Effortless corporate travel</span>
+                        <h2 class="h2 mb-4 animate__animated animate__fadeInRight animate__delay-1s">
+                            <span>Effortless corporate travel</span>
                         </h2>
                         <p class="lead mb-5 animate__animated animate__fadeInUp animate__delay-2s">
                             <i class="fas fa-check-circle me-2 text-warning"></i>Vetted stays, flat pricing, Zero hassle
                         </p>
-                        <div class="d-flex flex-column flex-sm-row gap-3 animate__animated animate__fadeInUp animate__delay-3s">
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-end animate__animated animate__fadeInUp animate__delay-3s">
                             <a href="#signup" class="btn btn-primary-custom btn-lg pulse">
                                 <i class="fas fa-rocket me-2"></i>GET STARTED
                             </a>
-                            <a href="#demo" class="btn btn-outline-light btn-lg">
-                                <i class="fas fa-play me-2"></i>Watch Demo
-                            </a>
+                        
                         </div>
                         <div class="mt-5 animate__animated animate__fadeInUp animate__delay-4s">
                             <span class="trust-badge">
@@ -524,86 +661,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="text-center animate__animated animate__fadeInRight animate__delay-2s">
-                        <div class="dashboard-preview floating">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-circle text-danger me-2"></i>
-                                <i class="fas fa-circle text-warning me-2"></i>
-                                <i class="fas fa-circle text-success me-2"></i>
-                                <span class="ms-auto text-muted small">Raahi Dashboard</span>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col-6">
-                                    <div class="p-3 rounded" style="background: var(--accent-orange); color: white;">
-                                        <i class="fas fa-chart-line fa-2x mb-2"></i>
-                                        <h4>₹2.4L</h4>
-                                        <small>Total Savings</small>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="p-3 rounded" style="background: var(--secondary-blue); color: white;">
-                                        <i class="fas fa-calendar-check fa-2x mb-2"></i>
-                                        <h4>127</h4>
-                                        <small>Active Bookings</small>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="p-3 rounded bg-light">
-                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <span><i class="fas fa-map-marker-alt text-primary me-2"></i>Recent Bookings</span>
-                                            <span class="badge bg-success">Live</span>
-                                        </div>
-                                        <div class="progress mb-2" style="height: 8px;">
-                                            <div class="progress-bar bg-warning" style="width: 75%"></div>
-                                        </div>
-                                        <small class="text-muted">Mumbai → Bangalore (15 travelers)</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="stat-item fade-in">
-                        <i class="fas fa-building fa-3x text-primary mb-3"></i>
-                        <span class="stat-number" data-target="500">0</span>
-                        <span class="text-muted">Companies Trust Us</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="stat-item fade-in">
-                        <i class="fas fa-percentage fa-3x text-success mb-3"></i>
-                        <span class="stat-number" data-target="30">0</span>
-                        <span class="text-muted">Average Savings</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="stat-item fade-in">
-                        <i class="fas fa-clock fa-3x text-warning mb-3"></i>
-                        <span class="stat-number">24/7</span>
-                        <span class="text-muted">Support Available</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-6">
-                    <div class="stat-item fade-in">
-                        <i class="fas fa-calendar-alt fa-3x text-info mb-3"></i>
-                        <span class="stat-number" data-target="50000">0</span>
-                        <span class="text-muted">Bookings Monthly</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Why Raahi Section -->
     <section id="why-raahi" class="py-5">
         <div class="container">
@@ -692,7 +753,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="feature-card text-center">
                         <div class="feature-icon icon-orange mx-auto">
-                            <i class="fas fa-user-headset"></i>
+                            <i class="fas fa-user"></i>
                         </div>
                         <h5 class="fw-bold">Dedicated Travel Manager</h5>
                         <p class="text-muted">Personal support for complex travel requirements with industry expertise.</p>
@@ -735,7 +796,153 @@
         </div>
     </section>
 
-    <!-- Success Stories/Testimonials -->
+
+
+    <!-- Made for Employees Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 fade-in">
+                    <h2 class="section-title display-5 text-start">Made for Employees.<br>Trusted by Corporates</h2>
+                    <p class="lead text-muted mb-5">A travel platform designed with both employee experience and corporate control in mind.</p>
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-blue me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Uniform Experience Across Cities</h5>
+                                    <p class="text-muted">Standardized, quality stays no matter where work takes you. Same service standards from Mumbai to Chennai, Bangalore to Delhi.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Consistent room quality</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Standardized amenities</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Same booking process</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-green me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-shield"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Safe & Verified Hotels Only</h5>
+                                    <p class="text-muted">Handpicked properties that ensure comfort and security. Every hotel undergoes our 47-point safety audit.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Safety certifications</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Female traveler safe zones</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>24/7 security presence</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-orange me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-stopwatch"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Hassle-Free Check-ins & Billing</h5>
+                                    <p class="text-muted">No last-minute surprises, everything pre-approved. Express check-in and automated expense reporting.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Mobile check-in</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Contactless experience</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Auto expense capture</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-purple me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Work-Ready Amenities</h5>
+                                    <p class="text-muted">Reliable Wi-Fi, seamless support, and comfort designed for business travelers who need to stay productive.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>High-speed internet (100+ Mbps)</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Ergonomic workspaces</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Video conferencing facilities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex">
+                                <div class="feature-icon icon-red me-4" style="width: 60px; height: 60px; font-size: 24px;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">24/7 Customer Support</h5>
+                                    <p class="text-muted">Round-the-clock assistance for any travel emergencies or booking modifications you might need.</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>Instant chat support</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Emergency hotline</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Multi-language assistance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 fade-in">
+                    <div class="monitor-container">
+                        <div class="monitor-frame">
+                            <div class="monitor-screen">
+                                <div class="dashboard-preview" style="margin: 0; border-radius: 12px;">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-mobile-alt text-primary me-2"></i>
+                                        <span class="fw-bold">Employee Mobile App</span>
+                                        <span class="ms-auto badge bg-success">Live</span>
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-6">
+                                            <div class="p-3 rounded bg-primary text-white text-center">
+                                                <i class="fas fa-search fa-2x mb-2"></i>
+                                                <h6>Smart Search</h6>
+                                                <small>AI-powered recommendations</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="p-3 rounded bg-success text-white text-center">
+                                                <i class="fas fa-calendar fa-2x mb-2"></i>
+                                                <h6>Quick Booking</h6>
+                                                <small>3-tap booking process</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-3 rounded bg-light mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span><i class="fas fa-bell text-warning me-2"></i>Travel Updates</span>
+                                            <span class="badge bg-warning">3</span>
+                                        </div>
+                                        <small class="text-muted d-block">✈️ Flight delayed by 30 mins</small>
+                                        <small class="text-muted d-block">🏨 Check-in ready at Hotel Taj</small>
+                                        <small class="text-muted d-block">🚗 Cab assigned: KA01AB1234</small>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <button class="btn btn-outline-primary btn-sm flex-fill">
+                                            <i class="fas fa-phone me-1"></i>Support
+                                        </button>
+                                        <button class="btn btn-outline-success btn-sm flex-fill">
+                                            <i class="fas fa-receipt me-1"></i>Expenses
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="monitor-stand"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  <!-- Success Stories/Testimonials -->
     <section id="testimonials" class="py-5 parallax" style="background-image: linear-gradient(rgba(30, 58, 95, 0.8), rgba(94, 159, 214, 0.8)), url('data:image/svg+xml,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 1000 600&quot; fill=&quot;%23f8f9fa&quot;><circle cx=&quot;200&quot; cy=&quot;200&quot; r=&quot;3&quot; opacity=&quot;0.3&quot;/><circle cx=&quot;600&quot; cy=&quot;400&quot; r=&quot;2&quot; opacity=&quot;0.4&quot;/><circle cx=&quot;800&quot; cy=&quot;100&quot; r=&quot;4&quot; opacity=&quot;0.2&quot;/></svg>'); color: white;">
         <div class="container">
             <div class="text-center mb-5 fade-in">
@@ -821,128 +1028,6 @@
         </div>
     </section>
 
-    <!-- Made for Employees Section -->
-    <section id="features" class="py-5 bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 fade-in">
-                    <h2 class="section-title display-5">Made for Employees.<br>Trusted by Corporates</h2>
-                    <p class="lead text-muted mb-4">A travel platform designed with both employee experience and corporate control in mind.</p>
-                    <div class="row g-4">
-                        <div class="col-12">
-                            <div class="d-flex">
-                                <div class="feature-icon icon-blue me-4" style="width: 60px; height: 60px; font-size: 24px;">
-                                    <i class="fas fa-map-marked-alt"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold">Uniform Experience Across Cities</h5>
-                                    <p class="text-muted">Standardized, quality stays no matter where work takes you. Same service standards from Mumbai to Chennai, Bangalore to Delhi.</p>
-                                    <ul class="list-unstyled">
-                                        <li><i class="fas fa-check text-success me-2"></i>Consistent room quality</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Standardized amenities</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Same booking process</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex">
-                                <div class="feature-icon icon-green me-4" style="width: 60px; height: 60px; font-size: 24px;">
-                                    <i class="fas fa-shield-check"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold">Safe & Verified Hotels Only</h5>
-                                    <p class="text-muted">Handpicked properties that ensure comfort and security. Every hotel undergoes our 47-point safety audit.</p>
-                                    <ul class="list-unstyled">
-                                        <li><i class="fas fa-check text-success me-2"></i>Safety certifications</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Female traveler safe zones</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>24/7 security presence</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex">
-                                <div class="feature-icon icon-orange me-4" style="width: 60px; height: 60px; font-size: 24px;">
-                                    <i class="fas fa-stopwatch"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold">Hassle-Free Check-ins & Billing</h5>
-                                    <p class="text-muted">No last-minute surprises, everything pre-approved. Express check-in and automated expense reporting.</p>
-                                    <ul class="list-unstyled">
-                                        <li><i class="fas fa-check text-success me-2"></i>Mobile check-in</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Contactless experience</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Auto expense capture</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="d-flex">
-                                <div class="feature-icon icon-purple me-4" style="width: 60px; height: 60px; font-size: 24px;">
-                                    <i class="fas fa-wifi"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold">Work-Ready Amenities</h5>
-                                    <p class="text-muted">Reliable Wi-Fi, seamless support, and comfort designed for business travelers who need to stay productive.</p>
-                                    <ul class="list-unstyled">
-                                        <li><i class="fas fa-check text-success me-2"></i>High-speed internet (100+ Mbps)</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Ergonomic workspaces</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Video conferencing facilities</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 fade-in">
-                    <div class="text-center">
-                        <div class="dashboard-preview">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-mobile-alt text-primary me-2"></i>
-                                <span class="fw-bold">Employee Mobile App</span>
-                                <span class="ms-auto badge bg-success">New</span>
-                            </div>
-                            <div class="row g-3 mb-3">
-                                <div class="col-6">
-                                    <div class="p-3 rounded bg-primary text-white text-center">
-                                        <i class="fas fa-search fa-2x mb-2"></i>
-                                        <h6>Smart Search</h6>
-                                        <small>AI-powered recommendations</small>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="p-3 rounded bg-success text-white text-center">
-                                        <i class="fas fa-calendar fa-2x mb-2"></i>
-                                        <h6>Quick Booking</h6>
-                                        <small>3-tap booking process</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="p-3 rounded bg-light mb-3">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span><i class="fas fa-bell text-warning me-2"></i>Travel Updates</span>
-                                    <span class="badge bg-warning">3</span>
-                                </div>
-                                <small class="text-muted d-block">✈️ Flight delayed by 30 mins</small>
-                                <small class="text-muted d-block">🏨 Check-in ready at Hotel Taj</small>
-                                <small class="text-muted d-block">🚗 Cab assigned: KA01AB1234</small>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-outline-primary btn-sm flex-fill">
-                                    <i class="fas fa-phone me-1"></i>Support
-                                </button>
-                                <button class="btn btn-outline-success btn-sm flex-fill">
-                                    <i class="fas fa-receipt me-1"></i>Expenses
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- How It Works Section -->
     <section id="how-it-works" class="py-5">
         <div class="container">
@@ -1007,176 +1092,13 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-5 fade-in">
-                <h2 class="section-title display-4">Transparent Pricing</h2>
-                <p class="lead text-muted">No hidden fees, no surprises. Choose the plan that works for your business.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 fade-in">
-                    <div class="feature-card text-center h-100">
-                        <div class="feature-icon icon-blue mx-auto">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h4 class="fw-bold">Starter</h4>
-                        <div class="display-6 text-primary fw-bold mb-3">Free</div>
-                        <p class="text-muted mb-4">Perfect for small teams getting started</p>
-                        <ul class="list-unstyled mb-4">
-                            <li><i class="fas fa-check text-success me-2"></i>Up to 25 bookings/month</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Basic dashboard</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Email support</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Standard hotels</li>
-                        </ul>
-                        <a href="#signup" class="btn btn-outline-primary">Get Started Free</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 fade-in">
-                    <div class="feature-card text-center h-100 position-relative">
-                        <div class="badge bg-warning position-absolute top-0 start-50 translate-middle px-3 py-2">Most Popular</div>
-                        <div class="feature-icon icon-orange mx-auto">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h4 class="fw-bold">Business</h4>
-                        <div class="display-6 text-primary fw-bold mb-3">₹99<small class="fs-6">/booking</small></div>
-                        <p class="text-muted mb-4">Ideal for growing companies</p>
-                        <ul class="list-unstyled mb-4">
-                            <li><i class="fas fa-check text-success me-2"></i>Unlimited bookings</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Advanced analytics</li>
-                            <li><i class="fas fa-check text-success me-2"></i>24/7 phone support</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Premium hotels</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Custom policies</li>
-                            <li><i class="fas fa-check text-success me-2"></i>API access</li>
-                        </ul>
-                        <a href="#signup" class="btn btn-primary-custom">Start Free Trial</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 fade-in">
-                    <div class="feature-card text-center h-100">
-                        <div class="feature-icon icon-green mx-auto">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <h4 class="fw-bold">Enterprise</h4>
-                        <div class="display-6 text-primary fw-bold mb-3">Custom</div>
-                        <p class="text-muted mb-4">For large organizations with complex needs</p>
-                        <ul class="list-unstyled mb-4">
-                            <li><i class="fas fa-check text-success me-2"></i>Volume discounts</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Dedicated account manager</li>
-                            <li><i class="fas fa-check text-success me-2"></i>White-label solution</li>
-                            <li><i class="fas fa-check text-success me-2"></i>Custom integrations</li>
-                            <li><i class="fas fa-check text-success me-2"></i>SLA guarantees</li>
-                            <li><i class="fas fa-check text-success me-2"></i>On-premise deployment</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline-success">Contact Sales</a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-5">
-                <p class="text-muted">All plans include: GST compliance, zero cancellation fees, and our lowest price guarantee</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5 fade-in">
-                <h2 class="section-title display-4">Frequently Asked Questions</h2>
-                <p class="lead text-muted">Everything you need to know about Raahi Corporate</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item faq-item fade-in">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    <i class="fas fa-question-circle me-3"></i>How does Raahi's pricing compare to other platforms?
-                                </button>
-                            </h3>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>Our transparent pricing model typically saves companies 20-35% on their travel costs. Unlike other platforms that have hidden fees, surge pricing, or mark-ups, we offer flat rates year-round. Plus, our lowest price guarantee ensures you're always getting the best deal.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item faq-item fade-in">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    <i class="fas fa-shield-alt me-3"></i>How do you ensure hotel quality and safety?
-                                </button>
-                            </h3>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>Every hotel in our network undergoes a comprehensive 47-point quality and safety audit. We personally visit each property, verify safety certifications, check cleanliness standards, test Wi-Fi speeds, and ensure business amenities are available. We also maintain a continuous feedback loop with travelers and regularly re-audit our properties.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item faq-item fade-in">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    <i class="fas fa-file-invoice me-3"></i>How does GST compliance work?
-                                </button>
-                            </h3>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>All our invoices are GST compliant with proper HSN codes and tax breakdowns. We automatically calculate 18% GST on accommodation and provide detailed invoices that are accepted by all accounting systems. Our invoices meet all audit requirements and can be directly integrated with your ERP systems.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item faq-item fade-in">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                    <i class="fas fa-clock me-3"></i>What kind of support do you provide?
-                                </button>
-                            </h3>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>We provide 24/7 support through multiple channels - phone, email, chat, and WhatsApp. Business plan customers get a dedicated relationship manager who knows your company's preferences and policies. For enterprise clients, we provide on-site support and custom SLA agreements.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item faq-item fade-in">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                                    <i class="fas fa-cogs me-3"></i>Can Raahi integrate with our existing systems?
-                                </button>
-                            </h3>
-                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>Yes! We offer API integration with popular ERP systems like SAP, Oracle, and Tally. We can also integrate with expense management tools like Concur, Expensify, and Zoho Expense. Custom integrations are available for enterprise customers with our technical team's support.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="accordion-item faq-item fade-in">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                                    <i class="fas fa-ban me-3"></i>What's your cancellation policy?
-                                </button>
-                            </h3>
-                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <p>We offer zero cancellation fees for all bookings made through Raahi. You can cancel or modify bookings up to 2 hours before check-in without any charges. For emergency cancellations, our 24/7 support team will assist you with instant refund processing.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Dashboard Preview Section -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 fade-in">
-                    <h2 class="section-title display-5">Powerful Dashboard.<br>Complete Control.</h2>
+                    <h2 class="section-title display-5 text-start">Powerful Dashboard.<br>Complete Control.</h2>
                     <p class="lead text-muted mb-4">Monitor spending, track bookings, and manage policies from one intuitive interface designed for business leaders.</p>
                     <div class="row g-3 mb-4">
                         <div class="col-6">
@@ -1190,7 +1112,7 @@
                         </div>
                         <div class="col-6">
                             <div class="d-flex align-items-center">
-                                <i class="fas fa-shield-check text-success fa-2x me-3"></i>
+                                <i class="fas fa-shield text-success fa-2x me-3"></i>
                                 <div>
                                     <h6 class="mb-0">Policy Compliance</h6>
                                     <small class="text-muted">Automated enforcement</small>
@@ -1226,7 +1148,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 fade-in">
-                    <div class="dashboard-preview">
+                    <div class="dashboard-preview mx-auto">
                         <div class="d-flex align-items-center mb-4">
                             <i class="fas fa-tachometer-alt text-primary me-2"></i>
                             <span class="fw-bold">Raahi Corporate Dashboard</span>
@@ -1236,7 +1158,7 @@
                         <div class="row g-3 mb-4">
                             <div class="col-6">
                                 <div class="p-3 rounded text-white text-center" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-coral));">
-                                    <i class="fas fa-rupee-sign fa-2x mb-2"></i>
+                                    <i class="fas fa-inr fa-2x mb-2"></i>
                                     <h3 class="mb-1">₹2.4L</h3>
                                     <small>Total Savings This Quarter</small>
                                     <div class="mt-2">
@@ -1250,7 +1172,7 @@
                                     <h3 class="mb-1">127</h3>
                                     <small>Active Bookings</small>
                                     <div class="mt-2">
-                                        <small class="badge bg-warning"><i class="fas fa-clock me-1"></i>15 pending approval</small>
+                                        <small class="badge bg-success"><i class="fas fa-arrow-down me-1"></i>10% down from last Quarter</small>
                                     </div>
                                 </div>
                             </div>
@@ -1307,6 +1229,99 @@
                                 <div class="d-flex justify-content-between py-1">
                                     <span>Q3 report generated</span>
                                     <span class="text-muted">3h ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="section-title display-4">Frequently Asked Questions</h2>
+                <p class="lead text-muted">Everything you need to know about Raahi Corporate</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="fas fa-question-circle me-3"></i>How does Raahi's pricing compare to other platforms?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Our transparent pricing model typically saves companies 20-35% on their travel costs. Unlike other platforms that have hidden fees, surge pricing, or mark-ups, we offer flat rates year-round. Plus, our lowest price guarantee ensures you're always getting the best deal.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="fas fa-shield-alt me-3"></i>How do you ensure hotel quality and safety?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Every hotel in our network undergoes a comprehensive 47-point quality and safety audit. We personally visit each property, verify safety certifications, check cleanliness standards, test Wi-Fi speeds, and ensure business amenities are available. We also maintain a continuous feedback loop with travelers and regularly re-audit our properties.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="fas fa-file-invoice me-3"></i>How does GST compliance work?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>All our invoices are GST compliant with proper HSN codes and tax breakdowns. We automatically calculate GST on accommodation and provide detailed invoices that are accepted by all accounting systems. Our invoices meet all audit requirements and can be directly integrated with your ERP systems.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="fas fa-clock me-3"></i>What kind of support do you provide?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>We provide 24/7 support through multiple channels - phone, email, chat, and WhatsApp. Business plan customers get a dedicated relationship manager who knows your company's preferences and policies. For enterprise clients, we provide on-site support and custom SLA agreements.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    <i class="fas fa-cogs me-3"></i>Can Raahi integrate with our existing systems?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Yes! We offer API integration with popular ERP systems like SAP, Oracle, and Tally. We can also integrate with expense management tools like Concur, Expensify, and Zoho Expense. Custom integrations are available for enterprise customers with our technical team's support.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item faq-item fade-in">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    <i class="fas fa-ban me-3"></i>What's your cancellation policy?
+                                </button>
+                            </h3>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>We offer zero cancellation fees for all bookings made through Raahi. You can cancel or modify bookings up to 2 hours before check-in without any charges. For emergency cancellations, our 24/7 support team will assist you with instant refund processing.</p>
                                 </div>
                             </div>
                         </div>
@@ -1456,62 +1471,63 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h5 class="fw-bold mb-3"><i class="fas fa-route me-2"></i>RAAHI CORPORATE</h5>
-                    <p class="text-muted">Making corporate travel effortless with vetted stays, transparent pricing, and zero hassle. Transform your business travel experience today.</p>
+                    <h5 class="fw-bold mb-3 text-white"><i class="fas fa-route me-2"></i>RAAHI CORPORATE</h5>
+                    <p class="text-light opacity-75">Making corporate travel effortless with vetted stays, transparent pricing, and zero hassle. Transform your business travel experience today.</p>
                     <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="text-muted fs-4"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-muted fs-4"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-muted fs-4"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-muted fs-4"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-light opacity-75 fs-4 hover-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-light opacity-75 fs-4 hover-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light opacity-75 fs-4 hover-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-light opacity-75 fs-4 hover-link"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="fw-bold mb-3">Product</h6>
+                    <h6 class="fw-bold mb-3 text-white">Product</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Features</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Dashboard</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Mobile App</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Integrations</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Dashboard</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Mobile App</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Integrations</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="fw-bold mb-3">Company</h6>
+                    <h6 class="fw-bold mb-3 text-white">Company</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Careers</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Contact</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Blog</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Press</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Press</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="fw-bold mb-3">Support</h6>
+                    <h6 class="fw-bold mb-3 text-white">Support</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Help Center</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>API Docs</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Status</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Security</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>System Health</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>API Docs</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Status</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Security</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>System Health</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
-                    <h6 class="fw-bold mb-3">Legal</h6>
+                    <h6 class="fw-bold mb-3 text-white">Legal</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Terms of Service</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Cookie Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>GDPR</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none"><i class="fas fa-chevron-right me-2"></i>Licenses</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Terms of Service</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Cookie Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>GDPR</a></li>
+                        <li class="mb-2"><a href="#" class="text-light opacity-75 text-decoration-none hover-link"><i class="fas fa-chevron-right me-2"></i>Licenses</a></li>
                     </ul>
                 </div>
             </div>
-            <hr class="my-4">
+            <hr class="my-4 border-light opacity-25">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="text-muted mb-0">
+                    <p class="text-light opacity-75 mb-0">
                         <i class="fas fa-copyright me-2"></i>2025 Raahi Corporate. All rights reserved. 
-                        <span class="ms-3"><i class="fas fa-phone me-1"></i>+91-9876543210</span>
+                        <span class="ms-3"><i class="fas fa-phone me-1"></i>+91-xxxxxxxx
+                        </span>
                         <span class="ms-3"><i class="fas fa-envelope me-1"></i>hello@raahi.co</span>
                     </p>
                 </div>
